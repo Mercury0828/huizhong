@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Topology">
+  <rect width="200" height="200" rx="16" fill="#137567" fill-opacity="0.08"/>
+  <g stroke="#137567" stroke-width="3" stroke-opacity="0.55">
+    <line x1="100" y1="100" x2="56" y2="56"/>
+    <line x1="100" y1="100" x2="146" y2="58"/>
+    <line x1="100" y1="100" x2="50" y2="138"/>
+    <line x1="100" y1="100" x2="150" y2="142"/>
+    <line x1="56" y1="56" x2="146" y2="58"/>
+    <line x1="50" y1="138" x2="150" y2="142"/>
+  </g>
+  <g>
+    <circle cx="56" cy="56" r="11" fill="#fff" stroke="#137567" stroke-width="3"/>
+    <circle cx="146" cy="58" r="11" fill="#fff" stroke="#137567" stroke-width="3"/>
+    <circle cx="50" cy="138" r="11" fill="#fff" stroke="#137567" stroke-width="3"/>
+    <circle cx="150" cy="142" r="11" fill="#fff" stroke="#137567" stroke-width="3"/>
+    <circle cx="100" cy="100" r="14" fill="#b5872b"/>
+  </g>
+</svg>

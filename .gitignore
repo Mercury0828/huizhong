@@ -1,0 +1,6 @@
+# Unused local backup of the original (full-size) portrait — keep it local, don't publish
+assets/photo_original_backup.jpg
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
