@@ -541,6 +541,35 @@ a:hover { color: var(--accent-deep); }
 [data-theme="dark"] .news__tag--talk { color: var(--accent); }
 .news__tag--paper { background: rgba(181,135,43,.14); color: var(--accent-2); }
 .news__tag--grant { background: var(--surface-2); border: 1px solid var(--line); color: var(--accent); }
+.news__tag--service { background: rgba(92,103,125,.12); color: var(--ink-soft); }
+.news__tag--position { background: var(--accent); color: #fff; }
+[data-theme="dark"] .news__tag--position { color: #0c1512; }
+
+/* News: collapse beyond the latest five */
+.news__item.is-collapsed { display: none; }
+.news__more {
+  margin-top: 14px;
+  padding: 6px 16px;
+  font-family: var(--sans);
+  font-size: .84rem; font-weight: 600;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.news__more:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+/* Pages (one per top-bar tab) */
+.page[hidden] { display: none; }
+.page > .section:first-child { padding-top: 0; }
+.topbar__nav a { position: relative; padding: 4px 0; }
+.topbar__nav a.is-active { color: #fff; font-weight: 600; }
+.topbar__nav a.is-active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
+  height: 2px; border-radius: 2px; background: #fff;
+}
 
 /* Grants & Funding */
 .pub-group__note { font-family: var(--sans, inherit); font-size: .85rem; font-weight: 500; color: var(--muted); }
@@ -674,7 +703,20 @@ a:hover { color: var(--accent-deep); }
   .sidenav { display: none; }
   .sidebar__foot { display: none; }
   .main { padding: 20px 28px 70px; }
-  .topbar__nav { display: none; }
+  /* Narrow screens: tabs stay visible as a horizontally scrollable row */
+  .topbar { padding: 0 12px; gap: 10px; }
+  .topbar__brand { display: none; }
+  .topbar__nav {
+    flex: 1; min-width: 0;
+    margin-left: 0;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-size: .84rem;
+    padding: 6px 4px;
+  }
+  .topbar__nav::-webkit-scrollbar { display: none; }
+  .theme-toggle { flex-shrink: 0; }
 }
 
 @media (max-width: 620px) {

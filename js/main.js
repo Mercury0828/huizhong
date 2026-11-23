@@ -57,28 +57,80 @@
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  /* ---------- Active section in side navigation ---------- */
-  var navLinks = document.querySelectorAll(".sidenav__link");
-  var sections = [];
-  navLinks.forEach(function (link) {
-    var id = link.getAttribute("data-target");
-    var sec = document.getElementById(id);
-    if (sec) sections.push({ link: link, sec: sec });
-  });
+  /* ---------- Page router: one page per top-bar tab ---------- */
+  var pages = document.querySelectorAll(".page");
+  var tabLinks = document.querySelectorAll(".topbar__nav a[data-nav]");
+  var mainEl = document.querySelector(".main");
+  var DEFAULT_PAGE = "biography";
+  // Old single-page anchors -> [page, section to scroll to]
+  var LEGACY = {
+    top: ["biography"], about: ["biography"], news: ["biography", "news"],
+    education: ["biography", "education"], publications: ["research", "publications"],
+    honors: ["service"], outside: ["contact", "outside"]
+  };
 
-  if (sections.length && "IntersectionObserver" in window) {
-    var current = null;
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          current = entry.target.id;
-          sections.forEach(function (s) {
-            s.link.classList.toggle("is-active", s.sec.id === current);
-          });
-        }
+  function resolve(hash) {
+    var key = (hash || "").replace(/^#/, "");
+    if (document.getElementById("page-" + key)) return [key];
+    if (LEGACY[key]) return LEGACY[key];
+    return [DEFAULT_PAGE];
+  }
+
+  function showPage(hash, isInitial) {
+    var target = resolve(hash);
+    var pageId = target[0];
+    pages.forEach(function (p) {
+      var on = p.getAttribute("data-page") === pageId;
+      p.hidden = !on;
+      if (on) {
+        p.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-in"); });
+      }
+    });
+    tabLinks.forEach(function (a) {
+      var on = a.getAttribute("data-nav") === pageId;
+      a.classList.toggle("is-active", on);
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+      if (on && a.scrollIntoView && window.innerWidth <= 920) {
+        a.scrollIntoView({ block: "nearest", inline: "center" });
+      }
+    });
+    var label = document.querySelector('.topbar__nav a[data-nav="' + pageId + '"]');
+    document.title = (pageId === DEFAULT_PAGE || !label ? "" : label.textContent + " · ") +
+      "Hui Zhong · Quantum Computing Systems, Privacy & Optimization";
+
+    var sec = target[1] && document.getElementById(target[1]);
+    if (sec) {
+      sec.scrollIntoView();
+    } else if (!isInitial) {
+      // On narrow screens the profile card sits above the content: jump to the content.
+      var y = window.innerWidth <= 920 && mainEl ? mainEl.getBoundingClientRect().top + window.scrollY - 60 : 0;
+      window.scrollTo(0, Math.max(0, y));
+    }
+  }
+
+  if (pages.length) {
+    window.addEventListener("hashchange", function () { showPage(location.hash, false); });
+    showPage(location.hash, true);
+  }
+
+  /* ---------- News: show the latest five, expand for the rest ---------- */
+  var NEWS_VISIBLE = 5;
+  var newsItems = document.querySelectorAll("#news-list .news__item");
+  var newsBtn = document.getElementById("news-more");
+  if (newsBtn && newsItems.length > NEWS_VISIBLE) {
+    var hiddenCount = newsItems.length - NEWS_VISIBLE;
+    var setNews = function (expanded) {
+      newsItems.forEach(function (li, i) {
+        li.classList.toggle("is-collapsed", !expanded && i >= NEWS_VISIBLE);
       });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-    sections.forEach(function (s) { spy.observe(s.sec); });
+      newsBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      newsBtn.textContent = expanded ? "Show less ▴" : "Show " + hiddenCount + " more ▾";
+    };
+    newsBtn.hidden = false;
+    setNews(false);
+    newsBtn.addEventListener("click", function () {
+      setNews(newsBtn.getAttribute("aria-expanded") !== "true");
+    });
   }
 
   /* ---------- Publication filter ---------- */

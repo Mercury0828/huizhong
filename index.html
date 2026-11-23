@@ -16,24 +16,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20261122b" />
   <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;⚛️&lt;/text&gt;&lt;/svg&gt;" />
 </head>
 <body>
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
-    <a href="#top" class="topbar__brand">Hui&nbsp;Zhong</a>
+    <a href="#biography" class="topbar__brand">Hui&nbsp;Zhong</a>
     <nav class="topbar__nav" aria-label="Primary">
-      <a href="#about">Biography</a>
-      <a href="#news">News</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#grants">Grants &amp; Funding</a>
-      <a href="#education">Education</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#recruiting">Recruiting</a>
-      <a href="#service">Service</a>
-      <a href="#contact">Contact</a>
+      <a href="#biography" data-nav="biography">Biography</a>
+      <a href="#research" data-nav="research">Research</a>
+      <a href="#grants" data-nav="grants">Grants &amp; Funding</a>
+      <a href="#teaching" data-nav="teaching">Teaching</a>
+      <a href="#service" data-nav="service">Service</a>
+      <a href="#recruiting" data-nav="recruiting">Recruiting</a>
+      <a href="#contact" data-nav="contact">Contact</a>
     </nav>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
       <span class="theme-toggle__icon">◐</span>
@@ -87,8 +84,11 @@
     <!-- ============ MAIN ============ -->
     <main class="main">
 
+      <!-- ===== PAGE: biography ===== -->
+      <div class="page" id="page-biography" data-page="biography">
+
       <!-- BIOGRAPHY -->
-      <section id="about" class="section reveal">
+      <section id="sec-about" class="section reveal">
         <h2 class="section__title">Biography</h2>
         <div class="prose">
           <p>
@@ -96,7 +96,7 @@
             <a href="https://miamioh.edu/cec/departments/computer-science-software-engineering/index.html" target="_blank" rel="noopener">Department of Computer Science and Software Engineering</a>
             at <strong>Miami University</strong>. I received my Bachelor of Science in Internet of Things from
             <strong>Dalian Maritime University</strong> in 2022 and my Ph.D. in Electrical and Computer
-            Engineering from the <strong>University of Houston</strong> in 2026, advised by Prof. Miao Pan.
+            Engineering from the <strong>University of Houston</strong> in 2026, advised by Prof. <a href="https://scholar.google.com/citations?user=zwh0osAAAAAJ&amp;hl=en" target="_blank" rel="noopener">Miao Pan</a>.
           </p>
           <p>
             My research focuses on building secure, privacy-preserving, and efficient quantum computing
@@ -129,14 +129,14 @@
       <!-- NEWS -->
       <section id="news" class="section reveal">
         <h2 class="section__title section__title--bar">News</h2>
-        <ul class="news">
+        <ul class="news" id="news-list">
           <li class="news__item">
             <span class="news__date">2026.11</span>
-            <p><span class="news__tag news__tag--grant">Grant</span> Awarded an <strong>NSF ACCESS Discover Allocation</strong> of 1,500,000 computing credits for GPU-based quantum computing research.</p>
+            <p><span class="news__tag news__tag--grant">Grant</span> <strong>NSF ACCESS Discover Allocation</strong>: awarded 1,500,000 GPU computing credits for GPU simulation of variational quantum training on networked quantum processors.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2026.10</span>
-            <p><span class="news__tag news__tag--paper">Paper</span> Three of our papers were accepted to the <strong>International Conference on Computing, Networking and Communications (ICNC 2027)</strong>.</p>
+            <p><span class="news__tag news__tag--paper">Paper</span> Three of our papers were accepted to <strong>ICNC 2027</strong>.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2026.10</span>
@@ -144,7 +144,19 @@
           </li>
           <li class="news__item">
             <span class="news__date">2026.10</span>
-            <p><span class="news__tag news__tag--grant">Grant</span> Received $8,000 in research credits through the <strong>IonQ Research Credits Program</strong>.</p>
+            <p><span class="news__tag news__tag--grant">Grant</span> <strong>IonQ Research Credits Program</strong>: awarded $8,000 in quantum hardware credits for calibrating the fidelity cost of qubit migration and remote gates in distributed quantum computing.</p>
+          </li>
+          <li class="news__item">
+            <span class="news__date">2026.10</span>
+            <p><span class="news__tag news__tag--service">Service</span> <strong>ICNC 2027</strong>: serving as Quantum Track Chair.</p>
+          </li>
+          <li class="news__item">
+            <span class="news__date">2026.10</span>
+            <p><span class="news__tag news__tag--service">Service</span> <strong>ICNC 2027</strong>: serving as TPC Member.</p>
+          </li>
+          <li class="news__item">
+            <span class="news__date">2026.10</span>
+            <p><span class="news__tag news__tag--service">Service</span> <strong>QCNC 2027</strong>: serving as TPC Member.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2026.09</span>
@@ -152,29 +164,64 @@
           </li>
           <li class="news__item">
             <span class="news__date">2026.08</span>
-            <p>Joined the <strong>Department of Computer Science and Software Engineering</strong> at <strong>Miami University</strong> as an Assistant Professor.</p>
+            <p><span class="news__tag news__tag--position">Position</span> Joined the <strong>Department of Computer Science and Software Engineering</strong> at <strong>Miami University</strong> as an Assistant Professor.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2025.09</span>
-            <p><span class="news__tag news__tag--talk">Talk</span> Served as <strong>Session Chair</strong> for "Toward Secure and Reliable Quantum Computing in the NISQ Era" at <strong>IEEE QCE (Quantum Week)</strong>, Albuquerque.</p>
+            <p><span class="news__tag news__tag--service">Service</span> <strong>IEEE QCE 2025</strong>: served as Session Chair for &ldquo;Toward Secure and Reliable Quantum Computing in the NISQ Era&rdquo;, Albuquerque.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2025.09</span>
-            <p><span class="news__tag news__tag--talk">Talk</span> Gave an <strong>oral presentation</strong> on <em>Enhanced Local Differential Privacy Protection against Crosstalk Attacks in Quantum Computing</em> at <strong>IEEE QCE 2025</strong>.</p>
+            <p><span class="news__tag news__tag--talk">Talk</span> Gave an oral presentation on <em>Enhanced Local Differential Privacy Protection against Crosstalk Attacks in Quantum Computing</em> at <strong>IEEE QCE 2025</strong>.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2025.07</span>
-            <p><span class="news__tag news__tag--paper">Paper</span> <em>Enhanced Local Differential Privacy Protection against Crosstalk Attacks in Quantum Computing</em> was accepted to <strong>IEEE QCE 2025</strong>.</p>
+            <p><span class="news__tag news__tag--paper">Paper</span> Our paper <em>Enhanced Local Differential Privacy Protection against Crosstalk Attacks in Quantum Computing</em> was accepted to <strong>IEEE QCE 2025</strong>.</p>
           </li>
           <li class="news__item">
             <span class="news__date">2025.04</span>
-            <p><span class="news__tag news__tag--paper">Paper</span> <em>Eve Said Yes: AirBone Authentication for Head-Wearable Smart Voice Assistant</em> was accepted to <strong>IEEE Transactions on Mobile Computing</strong>.</p>
+            <p><span class="news__tag news__tag--paper">Paper</span> Our paper <em>Eve Said Yes: AirBone Authentication for Head-Wearable Smart Voice Assistant</em> was accepted to <strong>IEEE Transactions on Mobile Computing</strong>.</p>
+          </li>
+        </ul>
+        <button type="button" class="news__more" id="news-more" aria-controls="news-list" aria-expanded="false" hidden>Show all news</button>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="section reveal">
+        <h2 class="section__title section__title--bar">Education</h2>
+        <ul class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__head">
+              <span class="timeline__title">Ph.D., Electrical &amp; Computer Engineering</span>
+              <span class="timeline__date">2022 – 2026</span>
+            </div>
+            <p class="timeline__org">University of Houston · Houston, TX, USA</p>
+            <p class="timeline__desc">Advisor: Prof. Miao Pan. Focus on privacy and security for quantum computing.</p>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__head">
+              <span class="timeline__title">Academic Exchange, Computer Science</span>
+              <span class="timeline__date">2021 – 2022</span>
+            </div>
+            <p class="timeline__org">Loughborough University · Loughborough, UK</p>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__head">
+              <span class="timeline__title">B.S., Internet of Things</span>
+              <span class="timeline__date">2018 – 2022</span>
+            </div>
+            <p class="timeline__org">Dalian Maritime University · Dalian, China</p>
           </li>
         </ul>
       </section>
 
+      </div>
+
+      <!-- ===== PAGE: research ===== -->
+      <div class="page" id="page-research" data-page="research">
+
       <!-- RESEARCH -->
-      <section id="research" class="section reveal">
+      <section id="sec-research" class="section reveal">
         <h2 class="section__title section__title--bar">Research</h2>
         <p class="prose prose--lede">
           Quantum computing systems must be secure and efficient as they scale from individual processors to
@@ -321,8 +368,13 @@
         </ol>
       </section>
 
+      </div>
+
+      <!-- ===== PAGE: grants ===== -->
+      <div class="page" id="page-grants" data-page="grants">
+
       <!-- GRANTS & FUNDING -->
-      <section id="grants" class="section reveal">
+      <section id="sec-grants" class="section reveal">
         <h2 class="section__title section__title--bar">Grants &amp; Funding</h2>
 
         <h3 class="pub-group">Funded Internal Grants <span class="pub-group__note">(2026, PI)</span></h3>
@@ -364,37 +416,13 @@
         </ul>
       </section>
 
-      <!-- EDUCATION -->
-      <section id="education" class="section reveal">
-        <h2 class="section__title section__title--bar">Education</h2>
-        <ul class="timeline">
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <span class="timeline__title">Ph.D., Electrical &amp; Computer Engineering</span>
-              <span class="timeline__date">2022 – 2026</span>
-            </div>
-            <p class="timeline__org">University of Houston · Houston, TX, USA</p>
-            <p class="timeline__desc">Advisor: Prof. Miao Pan. Focus on privacy and security for quantum computing.</p>
-          </li>
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <span class="timeline__title">Academic Exchange, Computer Science</span>
-              <span class="timeline__date">2021 – 2022</span>
-            </div>
-            <p class="timeline__org">Loughborough University · Loughborough, UK</p>
-          </li>
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <span class="timeline__title">B.S., Internet of Things</span>
-              <span class="timeline__date">2018 – 2022</span>
-            </div>
-            <p class="timeline__org">Dalian Maritime University · Dalian, China</p>
-          </li>
-        </ul>
-      </section>
+      </div>
+
+      <!-- ===== PAGE: teaching ===== -->
+      <div class="page" id="page-teaching" data-page="teaching">
 
       <!-- TEACHING -->
-      <section id="teaching" class="section reveal">
+      <section id="sec-teaching" class="section reveal">
         <h2 class="section__title section__title--bar">Teaching</h2>
         <div class="courses">
           <article class="course">
@@ -418,8 +446,38 @@
         </div>
       </section>
 
+      </div>
+
+      <!-- ===== PAGE: service ===== -->
+      <div class="page" id="page-service" data-page="service">
+
+      <!-- PROFESSIONAL SERVICE -->
+      <section id="sec-service" class="section reveal">
+        <h2 class="section__title section__title--bar">Professional Service</h2>
+
+        <p class="svc-label">Track Chair</p>
+        <p class="svc-text">International Conference on Computing, Networking and Communications (ICNC 2027)</p>
+        <p class="svc-label">Technical Program Committee (TPC) Member</p>
+        <p class="svc-text">International Conference on Quantum Communications, Networking, and Computing (QCNC 2027) · International Conference on Computing, Networking and Communications (ICNC 2027)</p>
+        <p class="svc-label">Organizing Committee Member</p>
+        <p class="svc-text">International Conference on Electronic Communications and Internet of Things Technologies (ECI 2027)</p>
+        <p class="svc-label">Session Chair</p>
+        <p class="svc-text">Toward Secure and Reliable Quantum Computing in the NISQ Era, IEEE International Conference on Quantum Computing and Engineering (QCE), Albuquerque, United States, Sept. 2025</p>
+        <p class="svc-label">Reviewer · Journals</p>
+        <p class="svc-text">Future Generation Computer Systems · Journal of Air Transport Management · ACM Computing Surveys · IEEE Open Journal of Vehicular Technology · IEEE Journal on Selected Areas in Communications · ICT Express · Pattern Recognition · Pervasive and Mobile Computing · Discrete Mathematics</p>
+        <p class="svc-label">Reviewer · Conferences</p>
+        <p class="svc-text">IEEE Global Communications Conference (GLOBECOM) · IEEE Vehicular Technology Conference (VTC) · International Conference on Artificial Intelligence, Information Processing and Cloud Computing (AIIPCC) · American Control Conference (ACC) · International Conference on Computing, Networking and Communications (ICNC)</p>
+        <p class="svc-label">Membership</p>
+        <p class="svc-text">IEEE Member (since 2026)</p>
+      </section>
+
+      </div>
+
+      <!-- ===== PAGE: recruiting ===== -->
+      <div class="page" id="page-recruiting" data-page="recruiting">
+
       <!-- RECRUITING -->
-      <section id="recruiting" class="section reveal">
+      <section id="sec-recruiting" class="section reveal">
         <h2 class="section__title section__title--bar">Recruiting</h2>
         <p class="prose prose--lede">
           Multiple Ph.D. and research assistant positions are available for highly self-motivated students.
@@ -449,28 +507,13 @@
         </p>
       </section>
 
-      <!-- PROFESSIONAL SERVICE -->
-      <section id="service" class="section reveal">
-        <h2 class="section__title section__title--bar">Professional Service</h2>
+      </div>
 
-        <p class="svc-label">Track Chair</p>
-        <p class="svc-text">International Conference on Computing, Networking and Communications (ICNC 2027)</p>
-        <p class="svc-label">Technical Program Committee (TPC) Member</p>
-        <p class="svc-text">International Conference on Quantum Communications, Networking, and Computing (QCNC 2027) · International Conference on Computing, Networking and Communications (ICNC 2027)</p>
-        <p class="svc-label">Organizing Committee Member</p>
-        <p class="svc-text">International Conference on Electronic Communications and Internet of Things Technologies (ECI 2027)</p>
-        <p class="svc-label">Session Chair</p>
-        <p class="svc-text">Toward Secure and Reliable Quantum Computing in the NISQ Era, IEEE International Conference on Quantum Computing and Engineering (QCE), Albuquerque, United States, Sept. 2025</p>
-        <p class="svc-label">Reviewer · Journals</p>
-        <p class="svc-text">Future Generation Computer Systems · Journal of Air Transport Management · ACM Computing Surveys · IEEE Open Journal of Vehicular Technology · IEEE Journal on Selected Areas in Communications · ICT Express · Pattern Recognition · Pervasive and Mobile Computing · Discrete Mathematics</p>
-        <p class="svc-label">Reviewer · Conferences</p>
-        <p class="svc-text">IEEE Global Communications Conference (GLOBECOM) · IEEE Vehicular Technology Conference (VTC) · International Conference on Artificial Intelligence, Information Processing and Cloud Computing (AIIPCC) · American Control Conference (ACC) · International Conference on Computing, Networking and Communications (ICNC)</p>
-        <p class="svc-label">Membership</p>
-        <p class="svc-text">IEEE Member (since 2026)</p>
-      </section>
+      <!-- ===== PAGE: contact ===== -->
+      <div class="page" id="page-contact" data-page="contact">
 
       <!-- CONTACT -->
-      <section id="contact" class="section reveal">
+      <section id="sec-contact" class="section reveal">
         <h2 class="section__title section__title--bar">Contact</h2>
         <p class="prose prose--lede">
           I am always glad to discuss quantum computing systems, privacy, and optimization, and to hear
@@ -514,6 +557,8 @@
         </div>
       </section>
 
+      </div>
+
       <footer class="footer">
         <p>Designed &amp; built by Hui Zhong · Last updated November 2026</p>
       </footer>
@@ -522,6 +567,6 @@
 
   <button id="to-top" class="to-top" aria-label="Back to top" title="Back to top">↑</button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20261122b"></script>
 </body>
 </html>
