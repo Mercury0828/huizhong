@@ -90,7 +90,10 @@ a:hover { color: var(--accent-deep); }
   margin-left: auto;
   font-size: .86rem;
 }
-.topbar__nav a { color: rgba(255,255,255,.82); font-weight: 500; }
+.topbar__nav a { color: rgba(255,255,255,.82); font-weight: 500; white-space: nowrap; }
+@media (max-width: 1120px) {
+  .topbar__nav { gap: 12px; font-size: .8rem; }
+}
 .topbar__nav a:hover { color: #fff; }
 
 .theme-toggle {
@@ -537,6 +540,16 @@ a:hover { color: var(--accent-deep); }
 .news__tag--talk { background: var(--accent-soft); color: var(--accent-deep); }
 [data-theme="dark"] .news__tag--talk { color: var(--accent); }
 .news__tag--paper { background: rgba(181,135,43,.14); color: var(--accent-2); }
+.news__tag--grant { background: var(--surface-2); border: 1px solid var(--line); color: var(--accent); }
+
+/* Grants & Funding */
+.pub-group__note { font-family: var(--sans, inherit); font-size: .85rem; font-weight: 500; color: var(--muted); }
+.grants { list-style: none; padding: 0; margin: 0; }
+.grant { padding: 12px 0 12px 16px; border-left: 3px solid var(--accent-soft); margin-bottom: 10px; }
+.grant:last-child { margin-bottom: 0; }
+.grant__title { margin: 0 0 3px; font-weight: 600; color: var(--ink); font-size: .98rem; line-height: 1.4; }
+.grant__sponsor { margin: 0; font-size: .88rem; color: var(--ink-soft); }
+.grant__meta { margin: 4px 0 0; font-size: .84rem; font-weight: 600; color: var(--accent); }
 
 /* Research — horizontal cards with image */
 .rcards { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
